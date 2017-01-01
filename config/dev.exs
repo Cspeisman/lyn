@@ -33,25 +33,14 @@ config :logger, :console, format: "[$level] $message\n"
 # and calculating stacktraces is usually expensive.
 config :phoenix, :stacktrace_depth, 20
 
-if File.exists?("/usr/local/Cellar/postgresql/") do
-  # Configure your database
-  config :lyn, Lyn.Repo,
-    adapter: Ecto.Adapters.Postgres,
-    username: System.get_env("USER"),
-    password: "",
-    database: "lyn_dev",
-    hostname: "localhost",
-    pool_size: 10
-else
-  # Configure your database
-  config :lyn, Lyn.Repo,
-    adapter: Ecto.Adapters.Postgres,
-    username: "postgres",
-    password: "postgres",
-    database: "lyn_dev",
-    hostname: "localhost",
-    pool_size: 10
-end
+config :lyn, Lyn.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  username: "postgres",
+  password: "postgres",
+  database: "lyn_dev",
+  hostname: "localhost",
+  pool_size: 10
+
 
 # Configure dogma
 config :dogma,
